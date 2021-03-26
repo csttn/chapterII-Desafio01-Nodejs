@@ -5,12 +5,20 @@ interface ICreateUserDTO {
   email: string;
 }
 
+interface IFindById {
+  id: string;
+}
+
+interface IFindByEmail {
+  email: string;
+}
+
 interface IUsersRepository {
   create({ name, email }: ICreateUserDTO): User;
-  findById(id: string): User | undefined;
-  findByEmail(email: string): User | undefined;
+  findById(id: string | string[]): User;
+  findByEmail(email: string): User;
   turnAdmin(user: User): User;
   list(): User[];
 }
 
-export { IUsersRepository, ICreateUserDTO };
+export { IUsersRepository, ICreateUserDTO, IFindById, IFindByEmail };
